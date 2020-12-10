@@ -17,9 +17,9 @@ class SocotraClient:
     def __debug(self, string):
         if self.debug:
             if type(string) == dict:
-                print json.dumps(string)
+                print(json.dumps(string))
             else:
-                print string
+                print(string)
 
     # Used for permissions
     def is_allowed(self, method_name):
@@ -216,6 +216,12 @@ class SocotraClient:
 
     def get_invoices_for_policyholder(self, locator):
         return self.__get("/policyholder/{0}/invoices".format(locator))
+
+    def get_check_invoices_for_policy(self, locator):
+        return self.__get("/policy/{0}/checkInvoices".format(locator))
+
+    def post_issue_next_invoice_for_policy(self, locator):
+        return self.__post("/policy/{0}/issueNextInvoice".format(locator))
 
     def create_policy(self,
                       product_name,
